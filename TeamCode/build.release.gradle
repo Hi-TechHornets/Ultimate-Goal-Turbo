@@ -1,0 +1,4 @@
+dependencies {
+    implementation 'com.acmerobotics.roadrunner:core:0.5.1'
+    implementation 'com.acmerobotics.dashboard:dashboard:0.3.9'
+}

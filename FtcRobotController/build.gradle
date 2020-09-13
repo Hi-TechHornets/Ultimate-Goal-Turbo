@@ -36,6 +36,8 @@ dependencies {
     turboApi project(':RobotServer')
     turboApi project(':OpenRC')
 
+    turboApi 'com.acmerobotics.dashboard:dashboard:0.3.9'
+
     extremeTurboApi project(':FtcCommon')
     extremeTurboApi project(':RobotCore')
     extremeTurboApi project(':Inspection')
@@ -51,6 +53,8 @@ dependencies {
     stockApi 'org.firstinspires.ftc:Hardware:5.5'
     stockApi 'org.firstinspires.ftc:FtcCommon:5.5'
     stockApi 'androidx.appcompat:appcompat:1.2.0'
+
+    stockApi 'com.acmerobotics.dashboard:dashboard:0.3.9'
 
     /*
      * Things needed regardless of turbo/extremeTurbo/stock
