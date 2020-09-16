@@ -383,7 +383,7 @@ public class FtcRobotControllerActivity extends Activity
 
     FtcAboutActivity.setBuildTimeFromBuildConfig(BuildConfig.BUILD_TIME);
 
-    FtcDashboard.stop();
+    FtcDashboard.start();
   }
 
   protected UpdateUI createUpdateUI() {
@@ -463,6 +463,8 @@ public class FtcRobotControllerActivity extends Activity
     if (preferencesHelper != null) preferencesHelper.getSharedPreferences().unregisterOnSharedPreferenceChangeListener(sharedPreferencesListener);
 
     RobotLog.cancelWriteLogcatToDisk();
+
+    FtcDashboard.stop();
   }
 
   protected void bindToService() {
@@ -682,7 +684,7 @@ public class FtcRobotControllerActivity extends Activity
       }
     });
 
-    FtcDashboard.attachEventLoop(eventLoop);
+    FtcDashboard.attachWebServer(service.getWebServer());
   }
 
   private void updateUIAndRequestRobotSetup() {
@@ -722,6 +724,8 @@ public class FtcRobotControllerActivity extends Activity
 
     passReceivedUsbAttachmentsToEventLoop();
     AndroidBoard.showErrorIfUnknownControlHub();
+
+    FtcDashboard.attachEventLoop(eventLoop);
   }
 
   protected OpModeRegister createOpModeRegister() {
@@ -737,7 +741,9 @@ public class FtcRobotControllerActivity extends Activity
     //
     RobotLog.clearGlobalErrorMsg();
     RobotLog.clearGlobalWarningMsg();
+    FtcDashboard.stop();
     shutdownRobot();
+    FtcDashboard.start();
     requestRobotSetup(new Runnable() {
       @Override public void run() {
         showRestartRobotCompleteToast(R.string.toastRestartRobotComplete);
